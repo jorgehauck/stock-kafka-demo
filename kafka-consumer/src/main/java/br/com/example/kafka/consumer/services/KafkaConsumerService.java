@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 public class KafkaConsumerService {
     @Autowired
     private StockService stockService;
-    @KafkaListener(topics = "meu-topico", groupId = "meu-grupo", containerFactory = "orderKafkaListenerContainerFactory")
+    @KafkaListener(topics = "compras-acoes", groupId = "meu-grupo", containerFactory = "orderKafkaListenerContainerFactory")
     public void consume(StockDTO stockDTO) {
         stockService.insertDataStock(stockDTO);
     }

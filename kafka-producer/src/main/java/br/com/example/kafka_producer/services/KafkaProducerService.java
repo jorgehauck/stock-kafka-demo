@@ -15,6 +15,6 @@ public class KafkaProducerService {
     }
     public void sendMessage(StockDTO stockDTO) {
         stockDTO.setDataCompra(LocalDateTime.now().toString());
-        kafkaTemplate.send("meu-topico", stockDTO);
+        kafkaTemplate.send("compras-acoes", stockDTO);
     }
 }

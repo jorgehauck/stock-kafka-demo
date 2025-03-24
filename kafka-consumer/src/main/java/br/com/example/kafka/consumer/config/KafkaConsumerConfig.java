@@ -26,7 +26,7 @@ public class KafkaConsumerConfig {
     public ConsumerFactory<String, StockDTO> consumerFactory() {
         Map<String, Object> config = new HashMap<>();
         config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
-        config.put(ConsumerConfig.GROUP_ID_CONFIG,"meu-topico");
+        config.put(ConsumerConfig.GROUP_ID_CONFIG,"compras-acoes");
         config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, ErrorHandlingDeserializer.class);
         config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, ErrorHandlingDeserializer.class);
         config.put(ErrorHandlingDeserializer.KEY_DESERIALIZER_CLASS, JsonDeserializer.class);
