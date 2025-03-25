@@ -1,6 +1,7 @@
 package br.com.example.kafka.consumer.config;
 
 import br.com.example.kafka.consumer.dto.StockDTO;
+import br.com.example.kafka.consumer.dto.StockListDTO;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,23 +23,27 @@ public class KafkaConsumerConfig {
 
     @Value("${spring.kafka.bootstrap-servers}")
     private String bootstrapAddress;
+
     @Bean
-    public ConsumerFactory<String, StockDTO> consumerFactory() {
+    public ConsumerFactory<String, StockListDTO> consumerFactory() {
         Map<String, Object> config = new HashMap<>();
         config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
-        config.put(ConsumerConfig.GROUP_ID_CONFIG,"compras-acoes");
+        config.put(ConsumerConfig.GROUP_ID_CONFIG, "compras-acoes");
         config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, ErrorHandlingDeserializer.class);
         config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, ErrorHandlingDeserializer.class);
         config.put(ErrorHandlingDeserializer.KEY_DESERIALIZER_CLASS, JsonDeserializer.class);
         config.put(ErrorHandlingDeserializer.VALUE_DESERIALIZER_CLASS, JsonDeserializer.class);
         config.put(JsonDeserializer.TRUSTED_PACKAGES, "*");
-        config.put(JsonDeserializer.VALUE_DEFAULT_TYPE, "br.com.example.kafka.consumer.dto.StockDTO");
-        return new DefaultKafkaConsumerFactory<>(config);
+
+        JsonDeserializer<StockListDTO> deserializer = new JsonDeserializer<>(StockListDTO.class);
+        config.put(JsonDeserializer.VALUE_DEFAULT_TYPE, "br.com.example.kafka.consumer.dto.StockListDTO");
+
+        return new DefaultKafkaConsumerFactory<>(config, new StringDeserializer(), deserializer);
     }
 
     @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, StockDTO> orderKafkaListenerContainerFactory() {
-        ConcurrentKafkaListenerContainerFactory<String, StockDTO> factory = new ConcurrentKafkaListenerContainerFactory<>();
+    public ConcurrentKafkaListenerContainerFactory<String, StockListDTO> orderKafkaListenerContainerFactory() {
+        ConcurrentKafkaListenerContainerFactory<String, StockListDTO> factory = new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory());
         return factory;
     }

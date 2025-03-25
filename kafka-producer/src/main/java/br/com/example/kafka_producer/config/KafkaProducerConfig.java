@@ -1,6 +1,7 @@
 package br.com.example.kafka_producer.config;
 
 import br.com.example.kafka_producer.dto.StockDTO;
+import br.com.example.kafka_producer.dto.StockListDTO;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Value;
@@ -12,6 +13,7 @@ import org.springframework.kafka.core.ProducerFactory;
 import org.springframework.kafka.support.serializer.JsonSerializer;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Configuration
@@ -19,7 +21,7 @@ public class KafkaProducerConfig {
     @Value("${spring.kafka.bootstrap-servers}")
     private String bootstrapAddress;
     @Bean
-    public ProducerFactory<String, StockDTO> producerFactory() {
+    public ProducerFactory<String, StockListDTO> producerFactory() {
         Map<String, Object> configProps = new HashMap<>();
         configProps.put(JsonSerializer.ADD_TYPE_INFO_HEADERS, false);
         configProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
@@ -28,7 +30,7 @@ public class KafkaProducerConfig {
         return new DefaultKafkaProducerFactory<>(configProps);
     }
     @Bean
-    public KafkaTemplate<String, StockDTO> kafkaTemplate() {
+    public KafkaTemplate<String, StockListDTO> kafkaTemplate() {
         return new KafkaTemplate<>(producerFactory());
     }
 }

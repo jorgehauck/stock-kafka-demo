@@ -43,14 +43,4 @@ public class StockDTO implements Serializable {
     public BigDecimal getTotalCompra() {
         return preco.multiply(new BigDecimal(quantidade));
     }
-
-    @Override
-    public String toString() {
-        return "StockDTO{" +
-                "ticker='" + ticker + '\'' +
-                ", quantidade=" + quantidade +
-                ", preco=" + preco +
-                ", dataCompra=" + dataCompra +
-                '}';
-    }
 }
