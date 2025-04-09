@@ -4,20 +4,21 @@ import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Entity
 @Table(name = "tb_stock")
 public class StockEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
     private String ticker;
     private Integer quantidade;
     private BigDecimal preco;
     private LocalDateTime dataCompra;
     private BigDecimal totalCompra;
     public StockEntity() {}
-    public StockEntity(Long id, String ticker, Integer quantidade, BigDecimal preco, LocalDateTime dataCompra, BigDecimal totalCompra) {
+    public StockEntity(UUID id, String ticker, Integer quantidade, BigDecimal preco, LocalDateTime dataCompra, BigDecimal totalCompra) {
         this.id = id;
         this.ticker = ticker;
         this.quantidade = quantidade;
@@ -25,11 +26,11 @@ public class StockEntity {
         this.dataCompra = dataCompra;
         this.totalCompra = totalCompra;
     }
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
@@ -60,7 +61,6 @@ public class StockEntity {
     public LocalDateTime getDataCompra() {
         return dataCompra;
     }
-
     public void setDataCompra(LocalDateTime dataCompra) {
         this.dataCompra = dataCompra;
     }
@@ -70,4 +70,5 @@ public class StockEntity {
     public void setTotalCompra(BigDecimal totalCompra) {
         this.totalCompra = totalCompra;
     }
+
 }

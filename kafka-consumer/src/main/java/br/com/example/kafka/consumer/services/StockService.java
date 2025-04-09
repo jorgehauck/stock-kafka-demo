@@ -8,11 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,6 +17,8 @@ import java.util.stream.Collectors;
 public class StockService {
     @Autowired
     private IStockRepository repository;
+    @Autowired
+    private EmailService emailService;
     @Transactional
     public List<StockDTO> insertDataStock(StockListDTO stockDTO) {
         List<StockEntity> stockList = new ArrayList<>();

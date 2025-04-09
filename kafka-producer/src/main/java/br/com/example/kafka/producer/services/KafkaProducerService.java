@@ -1,7 +1,6 @@
-package br.com.example.kafka_producer.services;
+package br.com.example.kafka.producer.services;
 
-import br.com.example.kafka_producer.dto.StockDTO;
-import br.com.example.kafka_producer.dto.StockListDTO;
+import br.com.example.kafka.producer.dto.StockListDTO;
 import org.springframework.kafka.annotation.EnableKafka;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;

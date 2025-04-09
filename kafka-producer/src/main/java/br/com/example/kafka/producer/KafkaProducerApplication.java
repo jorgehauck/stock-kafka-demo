@@ -1,4 +1,4 @@
-package br.com.example.kafka_producer;
+package br.com.example.kafka.producer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

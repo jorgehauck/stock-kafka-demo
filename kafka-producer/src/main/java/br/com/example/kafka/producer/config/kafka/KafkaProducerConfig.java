@@ -1,7 +1,6 @@
-package br.com.example.kafka_producer.config;
+package br.com.example.kafka.producer.config.kafka;
 
-import br.com.example.kafka_producer.dto.StockDTO;
-import br.com.example.kafka_producer.dto.StockListDTO;
+import br.com.example.kafka.producer.dto.StockListDTO;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,7 +12,6 @@ import org.springframework.kafka.core.ProducerFactory;
 import org.springframework.kafka.support.serializer.JsonSerializer;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Configuration

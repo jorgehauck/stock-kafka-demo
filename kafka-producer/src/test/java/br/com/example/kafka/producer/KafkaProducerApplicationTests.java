@@ -1,4 +1,4 @@
-package br.com.example.kafka_producer;
+package br.com.example.kafka.producer;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

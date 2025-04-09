@@ -1,4 +1,4 @@
-package br.com.example.kafka_producer.dto;
+package br.com.example.kafka.producer.dto;
 
 import java.util.ArrayList;
 import java.util.List;
