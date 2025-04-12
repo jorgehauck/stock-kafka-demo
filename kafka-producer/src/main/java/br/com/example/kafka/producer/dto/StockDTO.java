@@ -17,12 +17,14 @@ public class StockDTO implements Serializable {
     @Digits(integer = 10, fraction = 2, message = "O preço deve ter no máximo 10 dígitos na parte inteira e 2 na parte decimal.")
     private BigDecimal preco;
     private String dataCompra;
+    private BigDecimal totalCompra;
     public StockDTO() {}
-    public StockDTO(String ticker, Integer quantidade, BigDecimal preco, String dataCompra) {
+    public StockDTO(String ticker, Integer quantidade, BigDecimal preco, String dataCompra, BigDecimal totalCompra) {
         this.ticker = ticker;
         this.quantidade = quantidade;
         this.preco = preco;
         this.dataCompra = dataCompra;
+        this.totalCompra = totalCompra;
     }
     public String getTicker() {
         return ticker;
@@ -47,5 +49,8 @@ public class StockDTO implements Serializable {
     }
     public void setDataCompra(String dataCompra) {
         this.dataCompra = dataCompra;
+    }
+    public BigDecimal getTotalCompra() {
+        return preco.multiply(new BigDecimal(quantidade));
     }
 }
