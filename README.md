@@ -36,12 +36,12 @@ Este projeto demonstra a implementação de um sistema de mensageria utilizando 
 
 2. **Executar o Producer**
    ```sh
-   mvn spring-boot:run -pl kafka_producer
+   mvn spring-boot:run -pl kafka.producer
    ```
 
 3. **Executar o Consumer**
    ```sh
-   mvn spring-boot:run -pl kafka_consumer
+   mvn spring-boot:run -pl kafka.consumer
    ```
 
 ## 📄 Exemplo de JSON Enviado pelo Producer
